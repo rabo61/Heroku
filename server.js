@@ -3,6 +3,8 @@ var chalk = require('chalk');
 var app = express();
 var router = express.Router();
 var fs = require('fs');
+var parser = require('body-parser');
+app.use(parser.json());
 var emrBank;
 
 fs.readFile('./emr.json', 'utf-8', (err, data) => {
@@ -22,7 +24,18 @@ router.get('/emr', (req, res) => {
 });
 
 router.get('/emr/:id', (req, res) => {
-    res.json(emrBank[req.params.id]);
+    res.json(emrBank.req.params.id);
+});
+
+router.post('/emr', (req, res) => {
+    var body = req.body;
+    var id = 0;
+    for (var i in emrBank) {
+        id++;
+    }    
+    body.id = id;
+    emrBank.id = body;
+    res.status(201).json(emrBank.id);
 });
 
 app.use('/api', router);
