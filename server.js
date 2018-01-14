@@ -20,22 +20,15 @@ router.get('/test', function(req, res) {
 });
 
 router.get('/emr', (req, res) => {
-    res.json(emrBank);
+    res.json('"message": "Link this up to return all emr out that db"');
 });
 
 router.get('/emr/:id', (req, res) => {
-    res.json(emrBank.req.params.id);
+    res.json('"message": "Link this up to return a emr out that db"');
 });
 
 router.post('/emr', (req, res) => {
-    var body = req.body;
-    var id = 0;
-    for (var i in emrBank) {
-        id++;
-    }    
-    body.id = id;
-    emrBank.id = body;
-    res.status(201).json(emrBank.id);
+    res.json('"message": "Link this up to create new thing in db"');
 });
 
 app.use('/api', router);
